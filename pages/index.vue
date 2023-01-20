@@ -24,16 +24,11 @@
 
         <v-tabs-items v-model="tab">
           <v-tab-item value="einzelperson">
-            
-
-            <v-text-field
-              v-model="einzelperson_bruttolohn"
-              label="Bruttlohn"
-            >
+            <v-text-field v-model="einzelperson_bruttolohn" label="Bruttlohn">
             </v-text-field>
             <v-slider
-            v-model="einzelperson_bruttolohn"
-              max="10000000"
+              v-model="einzelperson_bruttolohn"
+              max="1000000"
               min="0"
             ></v-slider>
 
@@ -47,76 +42,68 @@
               <thead>
                 <tr>
                   <th class="text-left">Abzüge</th>
-                  <th class="text-left">bei einem Nein</th>
+                  <th class="text-right">bei einem Nein</th>
 
-                  <th class="text-left">bei einem Ja</th>
+                  <th class="text-right">bei einem Ja</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>Sozialabzug</td>
-                  <td>{{ einzelperson_sozialabzug_vorher }} CHF</td>
-                  <td>{{ einzelperson_sozialabzug_nachher }} CHF</td>
+                  <td class="text-right">{{ einzelperson_sozialabzug_vorher.toFixed(0) }} CHF</td>
+                  <td class="text-right">{{ einzelperson_sozialabzug_nachher.toFixed(0) }} CHF</td>
                 </tr>
 
                 <tr>
                   <td>Lohnabzüge (Annahme: 10%)</td>
-                  <td>{{ einzelperson_lohnabzuege }} CHF</td>
-                  <td>{{ einzelperson_lohnabzuege }} CHF</td>
+                  <td class="text-right">{{ einzelperson_lohnabzuege.toFixed(0) }} CHF</td>
+                  <td class="text-right">{{ einzelperson_lohnabzuege.toFixed(0) }} CHF</td>
                 </tr>
 
                 <tr>
                   <td>Berufskosten</td>
-                  <td>{{ einzelperson_berufskosten_vorher }} CHF</td>
-                  <td>{{ einzelperson_berufskosten_nachher }} CHF</td>
+                  <td class="text-right">{{ einzelperson_berufskosten_vorher.toFixed(0) }} CHF</td>
+                  <td class="text-right">{{ einzelperson_berufskosten_nachher.toFixed(0) }} CHF</td>
                 </tr>
                 <tr>
                   <td>Versicherungsabug</td>
-                  <td>{{ einzelperson_versicherungsabzug_vorher }} CHF</td>
-                  <td>{{ einzelperson_versicherungsabzug_nachher }} CHF</td>
+                  <td class="text-right">{{ einzelperson_versicherungsabzug_vorher.toFixed(0) }} CHF</td>
+                  <td class="text-right">{{ einzelperson_versicherungsabzug_nachher.toFixed(0) }} CHF</td>
                 </tr>
                 <tr>
                   <td>Säule 3a</td>
-                  <td>{{ einzelperson_saeule3a }} CHF</td>
-                  <td>{{ einzelperson_saeule3a }} CHF</td>
+                  <td class="text-right">{{ einzelperson_saeule3a.toFixed(0) }} CHF</td>
+                  <td class="text-right">{{ einzelperson_saeule3a.toFixed(0) }} CHF</td>
                 </tr>
                 <tr>
                   <td>Total Abzüge</td>
-                  <td>{{ einzelperson_abzuege_total_vorher }} CHF</td>
-                  <td>{{ einzelperson_abzuege_total_nachher }} CHF</td>
+                  <td class="text-right">{{ einzelperson_abzuege_total_vorher.toFixed(0) }} CHF</td>
+                  <td class="text-right">{{ einzelperson_abzuege_total_nachher.toFixed(0) }} CHF</td>
                 </tr>
-              </tbody>
-            </v-simple-table>
-            <hr />
-            <v-simple-table dense>
-              <thead>
                 <tr>
-                  <th class="text-left">Steuerbelastung</th>
-                  <th class="text-left">bei einem Nein</th>
-
-                  <th class="text-left">bei einem Ja</th>
+                  <td> </td>
+                  <td></td>
+                  <td></td>
                 </tr>
-              </thead>
-              <tbody>
                 <tr>
                   <td>Steuerbares Einkommen</td>
-                  <td>{{ einzelperson_steuerbares_einkommen_vorher }} CHF</td>
-                  <td>{{ einzelperson_steuerbares_einkommen_nachher }} CHF</td>
+                  <td class="text-right">{{ einzelperson_steuerbares_einkommen_vorher.toFixed(0) }} CHF</td>
+                  <td class="text-right">{{ einzelperson_steuerbares_einkommen_nachher.toFixed(0) }} CHF</td>
                 </tr>
                 <tr>
                   <td>Steuerbetrag</td>
-                  <td>{{ einzelperson_steuerbetrag_vorher }} CHF</td>
-                  <td>{{ einzelperson_steuerbetrag_nachher }} CHF</td>
+                  <td class="text-right">{{ einzelperson_steuerbetrag_vorher.toFixed(0) }} CHF</td>
+                  <td class="text-right">{{ einzelperson_steuerbetrag_nachher.toFixed(0) }} CHF</td>
                 </tr>
                 <tr>
                   <td>Ersparnis bei einem Ja</td>
                   <td></td>
-                  <td>{{ einzelperson_ersparnis }} CHF</td>
+                  <td class="text-right">{{ einzelperson_ersparnis.toFixed(0) }} CHF</td>
                 </tr>
                 <tr>
                   <td></td>
                   <td></td>
-                  <td>{{ einzelperson_ersparnis_prozent * 100 }} %</td>
+                  <td class="text-right">{{ (einzelperson_ersparnis_prozent * 100).toFixed(0) }} %</td>
                 </tr>
               </tbody>
             </v-simple-table>
@@ -146,7 +133,6 @@ export default {
 
       einzelperson_saeule3a: 6883,
       einzelperson_bruttolohn: 80000,
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     }
   },
   computed: {
@@ -173,14 +159,28 @@ export default {
       return this.einzelperson_bruttolohn * 0.1
     },
     einzelperson_steuerbares_einkommen_vorher() {
-      return (
-        this.einzelperson_bruttolohn - this.einzelperson_abzuege_total_vorher
-      )
+      if (
+        this.einzelperson_bruttolohn - this.einzelperson_abzuege_total_vorher >
+        0
+      ) {
+        return (
+          this.einzelperson_bruttolohn - this.einzelperson_abzuege_total_vorher
+        )
+      } else {
+        return 0
+      }
     },
     einzelperson_steuerbares_einkommen_nachher() {
-      return (
-        this.einzelperson_bruttolohn - this.einzelperson_abzuege_total_nachher
-      )
+      if (
+        this.einzelperson_bruttolohn - this.einzelperson_abzuege_total_nachher >
+        0
+      ) {
+        return (
+          this.einzelperson_bruttolohn - this.einzelperson_abzuege_total_nachher
+        )
+      } else {
+        return 0
+      }
     },
     einzelperson_steuerbetrag_vorher() {
       if (this.einzelperson_steuerbares_einkommen_vorher > 300000) {
@@ -236,3 +236,5 @@ export default {
   },
 }
 </script>
+
+
