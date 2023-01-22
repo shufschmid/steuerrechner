@@ -305,7 +305,7 @@ export default {
       )
     },
     familie_ersparnis_prozent() {
-      if (this.familie_steuerbetrag_vorher == 0) {
+      if (this.familie_steuerbetrag_vorher === 0) {
         return ''
       } else {
         return this.familie_ersparnis / this.familie_steuerbetrag_vorher
