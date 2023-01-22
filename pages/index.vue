@@ -1,12 +1,12 @@
 <template>
   <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
+    <v-col cols="4" sm="4" md="4">
       <v-card>
         <v-tabs
           v-model="tab"
-          background-color="deep-purple accent-4"
+          class="blue"
           centered
-          dark
+          
           icons-and-text
         >
           <v-tabs-slider></v-tabs-slider>
@@ -21,94 +21,10 @@
             <v-icon>mdi-human-male-female-child</v-icon>
           </v-tab>
         </v-tabs>
-
+        
         <v-tabs-items v-model="tab">
-          <v-tab-item value="einzelperson">
-            <v-text-field v-model="einzelperson_bruttolohn" label="Bruttlohn">
-            </v-text-field>
-            <v-slider
-              v-model="einzelperson_bruttolohn"
-              max="1000000"
-              min="0"
-            ></v-slider>
-
-            <v-slider
-              v-model="einzelperson_saeule3a"
-              label="Einzahlungen in die dritte Säule"
-              max="6883"
-              min="0"
-            ></v-slider>
-            <v-simple-table dense>
-              <thead>
-                <tr>
-                  <th class="text-left">Abzüge</th>
-                  <th class="text-right">bei einem Nein</th>
-
-                  <th class="text-right">bei einem Ja</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Sozialabzug</td>
-                  <td class="text-right">{{ einzelperson_sozialabzug_vorher.toFixed(0) }} CHF</td>
-                  <td class="text-right">{{ einzelperson_sozialabzug_nachher.toFixed(0) }} CHF</td>
-                </tr>
-
-                <tr>
-                  <td>Lohnabzüge (Annahme: 10%)</td>
-                  <td class="text-right">{{ einzelperson_lohnabzuege.toFixed(0) }} CHF</td>
-                  <td class="text-right">{{ einzelperson_lohnabzuege.toFixed(0) }} CHF</td>
-                </tr>
-
-                <tr>
-                  <td>Berufskosten</td>
-                  <td class="text-right">{{ einzelperson_berufskosten_vorher.toFixed(0) }} CHF</td>
-                  <td class="text-right">{{ einzelperson_berufskosten_nachher.toFixed(0) }} CHF</td>
-                </tr>
-                <tr>
-                  <td>Versicherungsabug</td>
-                  <td class="text-right">{{ einzelperson_versicherungsabzug_vorher.toFixed(0) }} CHF</td>
-                  <td class="text-right">{{ einzelperson_versicherungsabzug_nachher.toFixed(0) }} CHF</td>
-                </tr>
-                <tr>
-                  <td>Säule 3a</td>
-                  <td class="text-right">{{ einzelperson_saeule3a.toFixed(0) }} CHF</td>
-                  <td class="text-right">{{ einzelperson_saeule3a.toFixed(0) }} CHF</td>
-                </tr>
-                <tr>
-                  <td>Total Abzüge</td>
-                  <td class="text-right">{{ einzelperson_abzuege_total_vorher.toFixed(0) }} CHF</td>
-                  <td class="text-right">{{ einzelperson_abzuege_total_nachher.toFixed(0) }} CHF</td>
-                </tr>
-                <tr>
-                  <td> </td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Steuerbares Einkommen</td>
-                  <td class="text-right">{{ einzelperson_steuerbares_einkommen_vorher.toFixed(0) }} CHF</td>
-                  <td class="text-right">{{ einzelperson_steuerbares_einkommen_nachher.toFixed(0) }} CHF</td>
-                </tr>
-                <tr>
-                  <td>Steuerbetrag</td>
-                  <td class="text-right">{{ einzelperson_steuerbetrag_vorher.toFixed(0) }} CHF</td>
-                  <td class="text-right">{{ einzelperson_steuerbetrag_nachher.toFixed(0) }} CHF</td>
-                </tr>
-                <tr>
-                  <td>Ersparnis bei einem Ja</td>
-                  <td></td>
-                  <td class="text-right">{{ einzelperson_ersparnis.toFixed(0) }} CHF</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td class="text-right">{{ (einzelperson_ersparnis_prozent * 100).toFixed(0) }} %</td>
-                </tr>
-              </tbody>
-            </v-simple-table>
-          </v-tab-item>
-          <v-tab-item value="family">{{ tab }}</v-tab-item>
+          <EinzelPerson />
+          <FamilieComponent />
         </v-tabs-items>
       </v-card>
     </v-col>
@@ -236,5 +152,3 @@ export default {
   },
 }
 </script>
-
-
