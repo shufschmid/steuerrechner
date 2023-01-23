@@ -1,12 +1,11 @@
 <template>
   <v-row justify="center" align="center">
-    <v-col cols="4" sm="4" md="4">
+    <v-col cols="12" sm="12" md="6" lg="5">
       <v-card>
         <v-tabs
           v-model="tab"
           class="blue"
           centered
-          
           icons-and-text
         >
           <v-tabs-slider></v-tabs-slider>
@@ -21,10 +20,10 @@
             <v-icon>mdi-human-male-female-child</v-icon>
           </v-tab>
         </v-tabs>
-        
+
         <v-tabs-items v-model="tab">
-          <EinzelPerson />
-          <FamilieComponent />
+          <SingelPerson tab-item-value="einzelperson" />
+          <Family tab-item-value="family" />
         </v-tabs-items>
       </v-card>
     </v-col>
@@ -49,6 +48,11 @@ export default {
 
       einzelperson_saeule3a: 6883,
       einzelperson_bruttolohn: 80000,
+    }
+  },
+  created() {
+    if (this.$route.hash === '#family') {
+      this.tab = 'family'
     }
   },
   computed: {

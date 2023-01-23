@@ -1,139 +1,174 @@
 <template>
-  <v-tab-item value="einzelperson">
+  <v-tab-item :value="tabItemValue" class="pa-3">
     <v-row>
       <v-col cols="3" class="mb-0 pb-0">
         <v-text-field v-model="einzelperson_bruttolohn" label="Bruttlohn">
-        </v-text-field></v-col
-      ><v-col cols="9" class="mb-0 pb-0">
+        </v-text-field>
+      </v-col>
+      <v-col cols="9" class="mb-0 pb-0">
         <v-slider
           v-model="einzelperson_bruttolohn"
           max="1000000"
+          class="mt-8"
           min="0"
           style="margin-top: 10px"
-        ></v-slider
-      ></v-col>
+        >
+          <template v-slot:thumb-label="props">
+            <small style="color: black;font-size: 8px">
+              {{ props.value }}
+            </small>
+          </template>
+        </v-slider
+        >
+      </v-col>
 
       <v-col cols="3" class="my-0 py-0">
         <v-text-field v-model="einzelperson_saeule3a" label="Säule 3a">
-        </v-text-field></v-col
-      ><v-col cols="9" class="my-0 py-0">
+        </v-text-field>
+      </v-col
+      >
+      <v-col cols="9" class="my-0 py-0">
         <v-slider
           v-model="einzelperson_saeule3a"
           max="6883"
+          class="mt-8"
           min="0"
-        ></v-slider> </v-col
-    ></v-row>
+        >
+          <template v-slot:thumb-label="props">
+            <small style="color: black;font-size: 8px">
+              {{ props.value }}
+            </small>
+          </template>
+
+        </v-slider>
+      </v-col
+      >
+    </v-row>
     <v-simple-table dense>
       <thead>
-        <tr>
-          <th class="text-left">Abzüge</th>
-          <th class="text-right">bisher</th>
+      <tr>
+        <th class="text-left">Abzüge</th>
+        <th class="text-right">bisher</th>
 
-          <th class="text-right">neues Gesetz</th>
-        </tr>
+        <th class="text-right">neues Gesetz</th>
+      </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Sozialabzug</td>
-          <td class="text-right">
-            {{ einzelperson_sozialabzug_vorher.toFixed(0) }}
-          </td>
-          <td class="text-right">
-            {{ einzelperson_sozialabzug_nachher.toFixed(0) }}
-          </td>
-        </tr>
+      <tr>
+        <td>Sozialabzug</td>
+        <td class="text-right">
+          {{ einzelperson_sozialabzug_vorher }}
+        </td>
+        <td class="text-right">
+          {{ einzelperson_sozialabzug_nachher }}
+        </td>
+      </tr>
 
-        <tr>
-          <td>Lohnabzüge (10%)</td>
-          <td class="text-right">
-            {{ einzelperson_lohnabzuege.toFixed(0) }}
-          </td>
-          <td class="text-right">
-            {{ einzelperson_lohnabzuege.toFixed(0) }}
-          </td>
-        </tr>
+      <tr>
+        <td>Lohnabzüge (10%)</td>
+        <td class="text-right">
+          {{ Number(einzelperson_lohnabzuege).toFixed(0) }}
+        </td>
+        <td class="text-right">
+          {{ Number(einzelperson_lohnabzuege).toFixed(0) }}
+        </td>
+      </tr>
 
-        <tr>
-          <td>Berufskosten</td>
-          <td class="text-right">
-            {{ einzelperson_berufskosten_vorher.toFixed(0) }}
-          </td>
-          <td class="text-right">
-            {{ einzelperson_berufskosten_nachher.toFixed(0) }}
-          </td>
-        </tr>
-        <tr>
-          <td>Versicherungsabzug</td>
-          <td class="text-right">
-            {{ einzelperson_versicherungsabzug_vorher.toFixed(0) }}
-          </td>
-          <td class="text-right">
-            {{ einzelperson_versicherungsabzug_nachher.toFixed(0) }}
-          </td>
-        </tr>
-        <tr>
-          <td>Säule 3a</td>
-          <td class="text-right">
-            {{ einzelperson_saeule3a.toFixed(0) }}
-          </td>
-          <td class="text-right">
-            {{ einzelperson_saeule3a.toFixed(0) }}
-          </td>
-        </tr>
-        <tr>
-          <td>Total Abzüge</td>
-          <td class="text-right">
-            {{ einzelperson_abzuege_total_vorher.toFixed(0) }}
-          </td>
-          <td class="text-right">
-            {{ einzelperson_abzuege_total_nachher.toFixed(0) }}
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Steuerbares Einkommen</td>
-          <td class="text-right">
-            {{ einzelperson_steuerbares_einkommen_vorher.toFixed(0) }}
-          </td>
-          <td class="text-right">
-            {{ einzelperson_steuerbares_einkommen_nachher.toFixed(0) }}
-          </td>
-        </tr>
-        <tr>
-          <td>Steuerbetrag</td>
-          <td class="text-right">
-            {{ einzelperson_steuerbetrag_vorher.toFixed(0) }}
-          </td>
-          <td class="text-right">
-            {{ einzelperson_steuerbetrag_nachher.toFixed(0) }}
-          </td>
-        </tr>
-        <tr class="blue">
-          <td>Ersparnis bei einem Ja</td>
-          <td></td>
-          <td class="text-right">
-            {{ einzelperson_ersparnis.toFixed(0) }}
-          </td>
-        </tr>
-        <tr class="blue">
-          <td></td>
-          <td></td>
-          <td class="text-right">
-            {{ (einzelperson_ersparnis_prozent * 100).toFixed(0) }} %
-          </td>
-        </tr>
+      <tr>
+        <td>Berufskosten</td>
+        <td class="text-right">
+          {{ einzelperson_berufskosten_vorher }}
+        </td>
+        <td class="text-right">
+          {{ einzelperson_berufskosten_nachher }}
+        </td>
+      </tr>
+      <tr>
+        <td>Versicherungsabzug</td>
+        <td class="text-right">
+          {{ einzelperson_versicherungsabzug_vorher }}
+        </td>
+        <td class="text-right">
+          {{ einzelperson_versicherungsabzug_nachher }}
+        </td>
+      </tr>
+      <tr>
+        <td>Säule 3a</td>
+        <td class="text-right">
+          {{ einzelperson_saeule3a }}
+        </td>
+        <td class="text-right">
+          {{ einzelperson_saeule3a }}
+        </td>
+      </tr>
+      <tr>
+        <td>Total Abzüge</td>
+        <td class="text-right">
+          {{ einzelperson_abzuege_total_vorher }}
+        </td>
+        <td class="text-right">
+          {{ einzelperson_abzuege_total_nachher }}
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Steuerbares Einkommen</td>
+        <td class="text-right">
+          {{ einzelperson_steuerbares_einkommen_vorher }}
+        </td>
+        <td class="text-right">
+          {{ einzelperson_steuerbares_einkommen_nachher }}
+        </td>
+      </tr>
+      <tr>
+        <td>Steuerbetrag</td>
+        <td class="text-right">
+          {{ Number(einzelperson_steuerbetrag_vorher).toFixed(0) }}
+        </td>
+        <td class="text-right">
+          {{ Number(einzelperson_steuerbetrag_nachher).toFixed(0) }}
+        </td>
+      </tr>
       </tbody>
     </v-simple-table>
+    <div class="result-wrapper">
+      <v-simple-table>
+        <tbody style="font-size: 18px">
+        <tr class="primary mt-3" style="color: black;">
+          <td style="height: 20px"><b>Ersparnis bei einem Ja</b></td>
+          <td class="text-right">
+            <b>{{ Number(einzelperson_ersparnis).toFixed(0) }}</b>
+          </td>
+        </tr>
+        <tr class="primary" style="color: black">
+          <td></td>
+          <td class="text-right" style="height: 20px">
+            <b>{{
+                isNaN(Number(einzelperson_ersparnis_prozent * 100).toFixed(0)) ? '0' : Number(einzelperson_ersparnis_prozent * 100).toFixed(0) + '  %'
+              }}</b>
+          </td>
+        </tr>
+        </tbody>
+      </v-simple-table>
+    </div>
   </v-tab-item>
 </template>
 
 <script>
+import {mask} from 'vue-the-mask'
 export default {
   name: 'EinzelPerson',
+  directives: {mask},
+  props: {
+    tabItemValue: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       tab: null,
@@ -153,23 +188,22 @@ export default {
   },
   computed: {
     einzelperson_abzuege_total_vorher() {
-      return (
+      return Number(
         this.einzelperson_sozialabzug_vorher +
         this.einzelperson_berufskosten_vorher +
         this.einzelperson_versicherungsabzug_vorher +
         this.einzelperson_saeule3a +
         this.einzelperson_lohnabzuege
-      )
+      ).toFixed(0)
     },
 
     einzelperson_abzuege_total_nachher() {
-      return (
-        this.einzelperson_sozialabzug_nachher +
+      const result = this.einzelperson_sozialabzug_nachher +
         this.einzelperson_berufskosten_nachher +
         this.einzelperson_versicherungsabzug_nachher +
         this.einzelperson_saeule3a +
         this.einzelperson_lohnabzuege
-      )
+      return Number(result).toFixed(0);
     },
     einzelperson_lohnabzuege() {
       return this.einzelperson_bruttolohn * 0.1
@@ -179,9 +213,9 @@ export default {
         this.einzelperson_bruttolohn - this.einzelperson_abzuege_total_vorher >
         0
       ) {
-        return (
+        return Number(
           this.einzelperson_bruttolohn - this.einzelperson_abzuege_total_vorher
-        )
+        ).toFixed(0)
       } else {
         return 0
       }
@@ -202,14 +236,14 @@ export default {
       if (this.einzelperson_steuerbares_einkommen_vorher > 300000) {
         return (
           this.einzelperson_steuerbares_einkommen_vorher *
-            this.steuersatz_vorher +
+          this.steuersatz_vorher +
           (this.einzelperson_steuerbares_einkommen_vorher - 201500) * 0.0625 +
           (this.einzelperson_steuerbares_einkommen_vorher - 300000) * 0.01
         )
       } else if (this.einzelperson_steuerbares_einkommen_vorher > 201500) {
         return (
           this.einzelperson_steuerbares_einkommen_vorher *
-            this.steuersatz_vorher +
+          this.steuersatz_vorher +
           (this.einzelperson_steuerbares_einkommen_vorher - 201500) * 0.0625
         )
       } else {
@@ -223,14 +257,14 @@ export default {
       if (this.einzelperson_steuerbares_einkommen_nachher > 300000) {
         return (
           this.einzelperson_steuerbares_einkommen_nachher *
-            this.steuersatz_nachher +
+          this.steuersatz_nachher +
           (this.einzelperson_steuerbares_einkommen_nachher - 201500) * 0.0625 +
           (this.einzelperson_steuerbares_einkommen_nachher - 300000) * 0.01
         )
       } else if (this.einzelperson_steuerbares_einkommen_nachher > 201500) {
         return (
           this.einzelperson_steuerbares_einkommen_nachher *
-            this.steuersatz_nachher +
+          this.steuersatz_nachher +
           (this.einzelperson_steuerbares_einkommen_nachher - 201500) * 0.0625
         )
       } else {
@@ -252,3 +286,8 @@ export default {
   },
 }
 </script>
+<style lang="scss">
+.result-wrapper td {
+  height: 20px !important;
+}
+</style>
