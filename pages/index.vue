@@ -50,7 +50,7 @@ export default {
       einzelperson_bruttolohn: 80000,
     }
   },
-  created() {
+  mounted() {
     if (this.$route.hash === '#family') {
       this.tab = 'family'
     }
