@@ -1,14 +1,12 @@
 <template>
   <v-app dark>
-   
     <v-main>
       <v-container>
         <Nuxt />
       </v-container>
     </v-main>
-    
     <v-footer :absolute="!fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span><img style="width: 40px; height: 40px" src="~/static/android-chrome-192x192.png" alt="bajour-logo"/></span>
     </v-footer>
   </v-app>
 </template>
