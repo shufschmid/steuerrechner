@@ -159,10 +159,8 @@
 </template>
 
 <script>
-import {mask} from 'vue-the-mask'
 export default {
   name: 'EinzelPerson',
-  directives: {mask},
   props: {
     tabItemValue: {
       type: String,
