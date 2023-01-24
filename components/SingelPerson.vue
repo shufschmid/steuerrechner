@@ -44,6 +44,7 @@
       </v-col
       >
     </v-row>
+    <br>
     <v-simple-table dense>
       <thead>
       <tr>
@@ -84,7 +85,7 @@
         </td>
       </tr>
       <tr>
-        <td>Versicherungsabzug</td>
+        <td>Versicherung</td>
         <td class="text-right">
           {{ einzelperson_versicherungsabzug_vorher }}
         </td>
@@ -134,8 +135,10 @@
         </td>
       </tr>
       </tbody>
+      <br>
+      <br>
     </v-simple-table>
-    <div class="result-wrapper">
+    <div class="result-wrapper desktop">
       <v-simple-table>
         <tbody style="font-size: 18px">
         <tr class="primary mt-3" style="color: black;">
@@ -155,6 +158,28 @@
         </tbody>
       </v-simple-table>
     </div>
+    <v-bottom-navigation class="mobile-bottom-nav" :fixed="true" background-color="primary">
+      <div class="result-wrapper pt-2">
+        <v-simple-table>
+          <tbody style="font-size: 18px">
+          <tr class="primary mt-3" style="color: black;">
+            <td style="height: 20px"><b>Ersparnis bei einem Ja</b></td>
+            <td class="text-right">
+              <b>{{ Number(einzelperson_ersparnis).toFixed(0) }}</b>
+            </td>
+          </tr>
+          <tr class="primary" style="color: black">
+            <td></td>
+            <td class="text-right" style="height: 20px">
+              <b>{{
+                  isNaN(Number(einzelperson_ersparnis_prozent * 100).toFixed(0)) ? '0' : Number(einzelperson_ersparnis_prozent * 100).toFixed(0) + '  %'
+                }}</b>
+            </td>
+          </tr>
+          </tbody>
+        </v-simple-table>
+      </div>
+    </v-bottom-navigation>
   </v-tab-item>
 </template>
 

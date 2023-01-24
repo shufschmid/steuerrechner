@@ -79,6 +79,7 @@
       </v-col
       >
     </v-row>
+    <br>
     <v-simple-table dense>
       <thead>
       <tr>
@@ -119,7 +120,7 @@
         </td>
       </tr>
       <tr>
-        <td>Versicherungsabzug</td>
+        <td>Versicherung</td>
         <td class="text-right">
           {{ familie_versicherungsabzug_vorher.toFixed(0) }}
         </td>
@@ -146,7 +147,7 @@
         </td>
       </tr>
       <tr>
-        <td>Betreuungskostenabzug</td>
+        <td>Betreuungskosten</td>
         <td class="text-right">
           {{ familie_kinderdrittbetreuungskostenabzug_vorher }}
         </td>
@@ -187,8 +188,10 @@
         </td>
       </tr>
       </tbody>
+      <br>
+      <br>
     </v-simple-table>
-    <div class="result-wrapper">
+    <div class="result-wrapper desktop">
       <v-simple-table>
         <tbody style="font-size: 18px">
         <tr class="primary" style="color: black">
@@ -208,6 +211,28 @@
         </tbody>
       </v-simple-table>
     </div>
+    <v-bottom-navigation class="mobile-bottom-nav" :fixed="true" background-color="primary">
+      <div class="result-wrapper">
+        <v-simple-table>
+          <tbody style="font-size: 18px">
+          <tr class="primary" style="color: black">
+            <td><b>Ersparnis bei einem Ja</b></td>
+            <td></td>
+            <td class="text-right" style="color: black">
+              <b>{{ Number(familie_ersparnis).toFixed(0) }}</b>
+            </td>
+          </tr>
+          <tr class="primary">
+            <td></td>
+            <td></td>
+            <td class="text-right" style="color: black">
+              <b>{{ Number(familie_ersparnis_prozent * 100).toFixed(0) }} %</b>
+            </td>
+          </tr>
+          </tbody>
+        </v-simple-table>
+      </div>
+    </v-bottom-navigation>
   </v-tab-item>
 </template>
 

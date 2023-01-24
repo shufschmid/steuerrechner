@@ -2,12 +2,13 @@
   <v-app dark>
     <v-main>
       <v-container>
+       <img style="width: 40px; height: 40px" src="~/static/android-chrome-192x192.png" alt="bajour-logo"/>
         <Nuxt />
       </v-container>
     </v-main>
-    <v-footer :absolute="!fixed" app>
+<!--    <v-footer :absolute="false" app>
       <span><img style="width: 40px; height: 40px" src="~/static/android-chrome-192x192.png" alt="bajour-logo"/></span>
-    </v-footer>
+    </v-footer>-->
   </v-app>
 </template>
 
@@ -39,3 +40,46 @@ export default {
   },
 }
 </script>
+<style lang="scss">
+.v-input__control {
+  height: 25px;
+}
+.result-wrapper {
+  table tbody tr td b {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+.mobile-bottom-nav {
+  animation: fadeIn 3s linear;
+  display: none !important;
+}
+@media screen and (max-width: 640px) {
+  .v-data-table__wrapper tbody, .v-data-table__wrapper thead {
+    tr th:first-of-type, tr td:first-of-type {
+      padding-left: 0 !important;
+    }
+    tr th:last-of-type, tr td:last-of-type {
+      padding-right: 0 !important;
+    }
+  }
+  .result-wrapper.desktop {
+    display: none !important;
+  }
+  .mobile-bottom-nav {
+    animation: fadeIn .3s linear;
+    display: block !important;
+  }
+}
+
+@keyframes fadeIn {
+  0%    {
+    opacity: 0;
+
+  }
+  40% {
+    opacity: 0;
+  }
+  100%  { opacity: 1; }
+}
+</style>
