@@ -1,182 +1,225 @@
 <template>
-  <v-tab-item value="family">
+  <v-tab-item :value="tabItemValue" class="pa-3">
     <v-row>
       <v-col cols="3" class="mb-0 pb-0">
         <v-text-field v-model="familie_bruttolohn" label="Bruttlohn">
-        </v-text-field></v-col
-      ><v-col cols="9" class="mb-0 pb-0">
+        </v-text-field>
+      </v-col
+      >
+      <v-col cols="9" class="mb-0 pb-0">
         <v-slider
           v-model="familie_bruttolohn"
           max="1000000"
           min="0"
-          style="margin-top: 10px"
-        ></v-slider
-      ></v-col>
+          class="mt-8"
+        >
+          <template v-slot:thumb-label="props">
+            <small style="color: black;font-size: 8px">
+              {{ props.value }}
+            </small>
+          </template>
+        </v-slider
+        >
+      </v-col>
       <v-col cols="3" class="my-0 py-0">
         <v-text-field v-model="familie_kinder" label="Kinder">
-        </v-text-field></v-col
-      ><v-col cols="9" class="my-0 py-0">
+        </v-text-field>
+      </v-col>
+      <v-col cols="9" class="my-0 py-0">
         <v-slider
           v-model="familie_kinder"
           max="5"
           min="0"
-          style="margin-top: 10px"
-        ></v-slider
-      ></v-col>
+          class="mt-8"
+        >
+          <template v-slot:thumb-label="props">
+            <small style="color: black;font-size: 8px">
+              {{ props.value }}
+            </small>
+          </template>
+        </v-slider
+        >
+      </v-col>
       <v-col cols="3" class="my-0 py-0">
         <v-text-field
           v-model="familie_kinderdrittbetreuungskosten"
           label="Betreuung"
         >
-        </v-text-field></v-col
-      ><v-col cols="9" class="my-0 py-0">
+        </v-text-field>
+      </v-col>
+      <v-col cols="9" class="my-0 py-0">
         <v-slider
           v-model="familie_kinderdrittbetreuungskosten"
           max="250000"
           min="0"
-          style="margin-top: 10px"
-        ></v-slider
-      ></v-col>
+          class="mt-8"
+        ><template v-slot:thumb-label="props">
+            <small style="color: black;font-size: 8px">
+              {{ props.value }}
+            </small>
+          </template>
+        </v-slider>
+      </v-col>
       <v-col cols="3" class="my-0 py-0">
         <v-text-field v-model="familie_saeule3a" label="Säule 3a">
-        </v-text-field></v-col
-      ><v-col cols="9" class="my-0 py-0">
+        </v-text-field>
+      </v-col>
+      <v-col cols="9" class="my-0 py-0">
         <v-slider
           v-model="familie_saeule3a"
           max="13766"
           min="0"
-          style="margin-top: 10px"
-        ></v-slider> </v-col
-    ></v-row>
+          class="mt-8"
+        ><template v-slot:thumb-label="props">
+            <small style="color: black;font-size: 8px">
+              {{ props.value }}
+            </small>
+          </template>
+        </v-slider>
+      </v-col
+      >
+    </v-row>
     <v-simple-table dense>
       <thead>
-        <tr>
-          <th class="text-left">Abzüge</th>
-          <th class="text-right">bisher</th>
+      <tr>
+        <th class="text-left">Abzüge</th>
+        <th class="text-right">bisher</th>
 
-          <th class="text-right">neues Gesetz</th>
-        </tr>
+        <th class="text-right">neues Gesetz</th>
+      </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Sozialabzug</td>
-          <td class="text-right">
-            {{ familie_sozialabzug_vorher.toFixed(0) }}
-          </td>
-          <td class="text-right">
-            {{ familie_sozialabzug_nachher.toFixed(0) }}
-          </td>
-        </tr>
+      <tr>
+        <td>Sozialabzug</td>
+        <td class="text-right">
+          {{ Number(familie_sozialabzug_vorher).toFixed(0) }}
+        </td>
+        <td class="text-right">
+          {{ Number(familie_sozialabzug_nachher).toFixed(0) }}
+        </td>
+      </tr>
 
-        <tr>
-          <td>Lohnabzüge (10%)</td>
-          <td class="text-right">
-            {{ familie_lohnabzuege.toFixed(0) }}
-          </td>
-          <td class="text-right">
-            {{ familie_lohnabzuege.toFixed(0) }}
-          </td>
-        </tr>
+      <tr>
+        <td>Lohnabzüge (10%)</td>
+        <td class="text-right">
+          {{ familie_lohnabzuege.toFixed(0) }}
+        </td>
+        <td class="text-right">
+          {{ familie_lohnabzuege.toFixed(0) }}
+        </td>
+      </tr>
 
-        <tr>
-          <td>Berufskosten</td>
-          <td class="text-right">
-            {{ familie_berufskosten_vorher.toFixed(0) }}
-          </td>
-          <td class="text-right">
-            {{ familie_berufskosten_nachher.toFixed(0) }}
-          </td>
-        </tr>
-        <tr>
-          <td>Versicherungsabzug</td>
-          <td class="text-right">
-            {{ familie_versicherungsabzug_vorher.toFixed(0) }}
-          </td>
-          <td class="text-right">
-            {{ familie_versicherungsabzug_nachher.toFixed(0) }}
-          </td>
-        </tr>
-        <tr>
-          <td>Säule 3a</td>
-          <td class="text-right">
-            {{ familie_saeule3a.toFixed(0) }}
-          </td>
-          <td class="text-right">
-            {{ familie_saeule3a.toFixed(0) }}
-          </td>
-        </tr>
-        <tr>
-          <td>Kinderabzug</td>
-          <td class="text-right">
-            {{ familie_kinderabzug_vorher }}
-          </td>
-          <td class="text-right">
-            {{ familie_kinderabzug_nachher }}
-          </td>
-        </tr>
-        <tr>
-          <td>Betreuungskostenabzug</td>
-          <td class="text-right">
-            {{ familie_kinderdrittbetreuungskostenabzug_vorher }}
-          </td>
-          <td class="text-right">
-            {{ familie_kinderdrittbetreuungskostenabzug_nachher }}
-          </td>
-        </tr>
-        <tr>
-          <td>Total Abzüge</td>
-          <td class="text-right">
-            {{ familie_abzuege_total_vorher }}
-          </td>
-          <td class="text-right">
-            {{ familie_abzuege_total_nachher }}
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Steuerbares Einkommen</td>
-          <td class="text-right">
-            {{ familie_steuerbares_einkommen_vorher.toFixed(0) }}
-          </td>
-          <td class="text-right">
-            {{ familie_steuerbares_einkommen_nachher.toFixed(0) }}
-          </td>
-        </tr>
-        <tr>
-          <td>Steuerbetrag</td>
-          <td class="text-right">
-            {{ familie_steuerbetrag_vorher.toFixed(0) }}
-          </td>
-          <td class="text-right">
-            {{ familie_steuerbetrag_nachher.toFixed(0) }}
-          </td>
-        </tr>
-        <tr class="blue">
-          <td>Ersparnis bei einem Ja</td>
-          <td></td>
-          <td class="text-right">
-            {{ familie_ersparnis.toFixed(0) }}
-          </td>
-        </tr>
-        <tr class="blue">
-          <td></td>
-          <td></td>
-          <td class="text-right">
-            {{ (familie_ersparnis_prozent * 100).toFixed(0) }} %
-          </td>
-        </tr>
+      <tr>
+        <td>Berufskosten</td>
+        <td class="text-right">
+          {{ familie_berufskosten_vorher.toFixed(0) }}
+        </td>
+        <td class="text-right">
+          {{ Number(familie_berufskosten_nachher).toFixed(0) }}
+        </td>
+      </tr>
+      <tr>
+        <td>Versicherungsabzug</td>
+        <td class="text-right">
+          {{ familie_versicherungsabzug_vorher.toFixed(0) }}
+        </td>
+        <td class="text-right">
+          {{ familie_versicherungsabzug_nachher.toFixed(0) }}
+        </td>
+      </tr>
+      <tr>
+        <td>Säule 3a</td>
+        <td class="text-right">
+          {{ familie_saeule3a }}
+        </td>
+        <td class="text-right">
+          {{ familie_saeule3a }}
+        </td>
+      </tr>
+      <tr>
+        <td>Kinderabzug</td>
+        <td class="text-right">
+          {{ familie_kinderabzug_vorher }}
+        </td>
+        <td class="text-right">
+          {{ familie_kinderabzug_nachher }}
+        </td>
+      </tr>
+      <tr>
+        <td>Betreuungskostenabzug</td>
+        <td class="text-right">
+          {{ familie_kinderdrittbetreuungskostenabzug_vorher }}
+        </td>
+        <td class="text-right">
+          {{ familie_kinderdrittbetreuungskostenabzug_nachher }}
+        </td>
+      </tr>
+      <tr>
+        <td>Total Abzüge</td>
+        <td class="text-right">
+          {{ Number(familie_abzuege_total_vorher).toFixed(0) }}
+        </td>
+        <td class="text-right">
+          {{ Number(familie_abzuege_total_nachher).toFixed(0) }}
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Steuerbares Einkommen</td>
+        <td class="text-right">
+          {{ familie_steuerbares_einkommen_vorher.toFixed(0) }}
+        </td>
+        <td class="text-right">
+          {{ familie_steuerbares_einkommen_nachher.toFixed(0) }}
+        </td>
+      </tr>
+      <tr>
+        <td>Steuerbetrag</td>
+        <td class="text-right">
+          {{ Number(familie_steuerbetrag_vorher).toFixed(0) }}
+        </td>
+        <td class="text-right">
+          {{ Number(familie_steuerbetrag_nachher).toFixed(0) }}
+        </td>
+      </tr>
       </tbody>
     </v-simple-table>
+    <div class="result-wrapper">
+      <v-simple-table>
+        <tbody style="font-size: 18px">
+        <tr class="primary" style="color: black">
+          <td><b>Ersparnis bei einem Ja</b></td>
+          <td></td>
+          <td class="text-right" style="color: black">
+            <b>{{ Number(familie_ersparnis).toFixed(0) }}</b>
+          </td>
+        </tr>
+        <tr class="primary">
+          <td></td>
+          <td></td>
+          <td class="text-right" style="color: black">
+            <b>{{ Number(familie_ersparnis_prozent * 100).toFixed(0) }} %</b>
+          </td>
+        </tr>
+        </tbody>
+      </v-simple-table>
+    </div>
   </v-tab-item>
 </template>
 
 <script>
 export default {
   name: 'FamilieComponent',
+  props: {
+    tabItemValue: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       tab: null,
