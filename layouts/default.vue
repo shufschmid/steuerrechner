@@ -3,7 +3,7 @@
     <v-main>
       <v-container>
        <img style="width: 40px; height: 40px" src="~/static/android-chrome-192x192.png" alt="bajour-logo"/>
-        <Nuxt />
+       <Nuxt />
       </v-container>
     </v-main>
 <!--    <v-footer :absolute="false" app>

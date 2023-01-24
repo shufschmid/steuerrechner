@@ -4,7 +4,7 @@
       <v-card>
         <v-tabs
           v-model="tab"
-          class="blue"
+          class="primary"
           centered
           icons-and-text
         >
