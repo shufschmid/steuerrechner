@@ -21,11 +21,12 @@
           </v-tab>
         </v-tabs>
 
-        <v-tabs-items v-model="tab">
+        <v-tabs-items v-model="tab" style="margin-bottom: 70px">
           <SingelPerson tab-item-value="einzelperson" />
           <Family tab-item-value="family" />
         </v-tabs-items>
       </v-card>
+      <p class="pt-2" style="color: white; transform: translateY(calc(-95%))">Ein Service von Bajour. Weitere Informationen: <a href="https://bajour.ch/tag/Steuerpaket">bajour.ch/tag/Steuerpaket</a></p>
     </v-col>
   </v-row>
 </template>

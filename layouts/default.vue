@@ -3,8 +3,7 @@
     <v-main>
       <v-container>
         <v-row>
-<!--          <img style="width: 40px; height: 40px" src="~/static/android-chrome-192x192.png" alt="bajour-logo"/>-->
-          <h1 class="text-md mx-auto col-sm-12 col-md-6 col-lg-5 col-12">Bajour-Steuerrechner</h1>
+            <h1 class="text-md mx-auto col-sm-12 col-md-6 col-lg-5 col-12" style="font-size: 26px"><img style="width: 40px; height: 40px; transform: translateY(10px)" src="~/static/android-chrome-192x192.png" alt="bajour-logo"/> Bajour-Steuerrechner</h1>
         </v-row>
        <Nuxt />
       </v-container>
