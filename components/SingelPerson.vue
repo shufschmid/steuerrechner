@@ -158,12 +158,12 @@
         </tbody>
       </v-simple-table>
     </div>
-    <v-bottom-navigation class="mobile-bottom-nav" :fixed="true" background-color="primary">
+    <v-bottom-navigation class="mobile-bottom-nav" height="70" :fixed="true" background-color="primary">
       <div class="result-wrapper pt-2">
         <v-container class="py-0">
           <v-row>
             <v-col cols="12" sm="12" md="6" lg="5" class="mx-auto px-4">
-              <v-simple-table class="mx-auto">
+              <v-simple-table class="mx-auto primary" >
                 <tbody style="font-size: 18px">
                 <tr class="primary mt-3" style="color: black;">
                   <td style="height: 20px"><b>Ersparnis bei einem Ja</b></td>
@@ -177,6 +177,10 @@
                     <b>{{
                         isNaN(Number(einzelperson_ersparnis_prozent * 100).toFixed(0)) ? '0' : Number(einzelperson_ersparnis_prozent * 100).toFixed(0) + '  %'
                       }}</b>
+                  </td>
+                </tr>
+                <tr class="primary pa-0">
+                  <td style="width: 100%;"><p class="pb-2 pl-2" style="color: black; transform: translateY(-20px)">Weitere Infos: <a style="color: black; text-decoration: underline" href="https://bajour.ch/tag/Steuerpaket" target="_blank">bajour.ch/Steuerpaket</a></p>
                   </td>
                 </tr>
                 </tbody>
