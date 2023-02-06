@@ -160,24 +160,28 @@
     </div>
     <v-bottom-navigation class="mobile-bottom-nav" :fixed="true" background-color="primary">
       <div class="result-wrapper pt-2">
-        <v-simple-table>
-          <tbody style="font-size: 18px">
-          <tr class="primary mt-3" style="color: black;">
-            <td style="height: 20px"><b>Ersparnis bei einem Ja</b></td>
-            <td class="text-right">
-              <b>{{ Number(einzelperson_ersparnis).toFixed(0) }}</b>
-            </td>
-          </tr>
-          <tr class="primary" style="color: black">
-            <td></td>
-            <td class="text-right" style="height: 20px">
-              <b>{{
-                  isNaN(Number(einzelperson_ersparnis_prozent * 100).toFixed(0)) ? '0' : Number(einzelperson_ersparnis_prozent * 100).toFixed(0) + '  %'
-                }}</b>
-            </td>
-          </tr>
-          </tbody>
-        </v-simple-table>
+        <v-row>
+          <v-col cols="12" sm="12" md="6" lg="5" class="mx-auto px-md-15">
+            <v-simple-table class="mx-auto">
+              <tbody style="font-size: 18px">
+              <tr class="primary mt-3" style="color: black;">
+                <td style="height: 20px"><b>Ersparnis bei einem Ja</b></td>
+                <td class="text-right">
+                  <b>{{ Number(einzelperson_ersparnis).toFixed(0) }}</b>
+                </td>
+              </tr>
+              <tr class="primary" style="color: black">
+                <td></td>
+                <td class="text-right" style="height: 20px">
+                  <b>{{
+                      isNaN(Number(einzelperson_ersparnis_prozent * 100).toFixed(0)) ? '0' : Number(einzelperson_ersparnis_prozent * 100).toFixed(0) + '  %'
+                    }}</b>
+                </td>
+              </tr>
+              </tbody>
+            </v-simple-table>
+          </v-col>
+        </v-row>
       </div>
     </v-bottom-navigation>
   </v-tab-item>

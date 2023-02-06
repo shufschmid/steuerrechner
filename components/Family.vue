@@ -213,24 +213,28 @@
     </div>
     <v-bottom-navigation class="mobile-bottom-nav" :fixed="true" background-color="primary">
       <div class="result-wrapper">
-        <v-simple-table>
-          <tbody style="font-size: 18px">
-          <tr class="primary" style="color: black">
-            <td><b>Ersparnis bei einem Ja</b></td>
-            <td></td>
-            <td class="text-right" style="color: black">
-              <b>{{ Number(familie_ersparnis).toFixed(0) }}</b>
-            </td>
-          </tr>
-          <tr class="primary">
-            <td></td>
-            <td></td>
-            <td class="text-right" style="color: black">
-              <b>{{ Number(familie_ersparnis_prozent * 100).toFixed(0) }} %</b>
-            </td>
-          </tr>
-          </tbody>
-        </v-simple-table>
+        <v-row>
+          <v-col cols="12" sm="12" md="6" lg="5" class="mx-auto px-md-15">
+            <v-simple-table>
+              <tbody style="font-size: 18px">
+              <tr class="primary" style="color: black">
+                <td><b>Ersparnis bei einem Ja</b></td>
+                <td></td>
+                <td class="text-right" style="color: black">
+                  <b>{{ Number(familie_ersparnis).toFixed(0) }}</b>
+                </td>
+              </tr>
+              <tr class="primary">
+                <td></td>
+                <td></td>
+                <td class="text-right" style="color: black">
+                  <b>{{ Number(familie_ersparnis_prozent * 100).toFixed(0) }} %</b>
+                </td>
+              </tr>
+              </tbody>
+            </v-simple-table>
+          </v-col>
+        </v-row>
       </div>
     </v-bottom-navigation>
   </v-tab-item>

@@ -2,7 +2,10 @@
   <v-app dark>
     <v-main>
       <v-container>
-       <img style="width: 40px; height: 40px" src="~/static/android-chrome-192x192.png" alt="bajour-logo"/>
+        <v-row>
+<!--          <img style="width: 40px; height: 40px" src="~/static/android-chrome-192x192.png" alt="bajour-logo"/>-->
+          <h1 class="text-md mx-auto col-sm-12 col-md-6 col-lg-5 col-12">Bajour-Steuerrechner</h1>
+        </v-row>
        <Nuxt />
       </v-container>
     </v-main>
@@ -50,11 +53,10 @@ export default {
     padding-right: 10px !important;
   }
 }
-.mobile-bottom-nav {
-  animation: fadeIn 3s linear;
+.result-wrapper.desktop {
   display: none !important;
 }
-@media screen and (max-width: 640px) {
+@media screen and (min-width: 0) {
   .v-data-table__wrapper tbody, .v-data-table__wrapper thead {
     tr th:first-of-type, tr td:first-of-type {
       padding-left: 0 !important;
@@ -62,9 +64,6 @@ export default {
     tr th:last-of-type, tr td:last-of-type {
       padding-right: 0 !important;
     }
-  }
-  .result-wrapper.desktop {
-    display: none !important;
   }
   .mobile-bottom-nav {
     animation: fadeIn .3s linear;

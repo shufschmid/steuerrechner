@@ -6,8 +6,9 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - steuerrechner',
-    title: 'steuerrechner',
+    // titleTemplate: '%s - steuerrechner',
+    titleTemplate: 'Bajour-Steuerrechner',
+    title: 'Bajour-Steuerrechner',
     htmlAttrs: {
       lang: 'en',
     },
