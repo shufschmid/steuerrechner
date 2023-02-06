@@ -50,7 +50,7 @@
       <v-col cols="9" class="my-0 py-0">
         <v-slider
           v-model="familie_kinderdrittbetreuungskosten"
-          max="250000"
+          max="100000"
           min="0"
           class="mt-8"
         ><template v-slot:thumb-label="props">
